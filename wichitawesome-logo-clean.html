@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wichitawesome - Logo (Block Style)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .logo-container {
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .logo-main {
+            margin-bottom: 80px;
+        }
+
+        .logo-svg {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+        }
+
+        .variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .variation {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .variation-label {
+            color: #999999;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .variation svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .download-options {
+            margin-top: 60px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: #FF006E;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .download-btn:hover {
+            background: #D90060;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 0, 110, 0.4);
+        }
+
+        .color-info {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .swatch {
+            text-align: center;
+        }
+
+        .swatch-color {
+            width: 100%;
+            height: 80px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .swatch-name {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .swatch-hex {
+            color: #999999;
+            font-size: 12px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <h1>Wichitawesome - Logo System</h1>
+        
+        <!-- Main Logo -->
+        <div class="logo-main">
+            <svg class="logo-svg" viewBox="0 0 900 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Main block style logo - clean, no gradients -->
+                
+                <!-- Background rectangle (optional, remove for transparent) -->
+                <!-- <rect x="0" y="0" width="900" height="150" fill="#0A0A0A"/> -->
+                
+                <!-- Main text - bold, clean -->
+                <text x="450" y="100" 
+                      font-family="Impact, 'Arial Black', 'Helvetica', sans-serif" 
+                      font-size="80" 
+                      font-weight="900" 
+                      text-anchor="middle" 
+                      fill="#FFFFFF"
+                      letter-spacing="2">
+                    WICHITAWESOME
+                </text>
+                
+                <!-- Outline for depth -->
+                <text x="450" y="100" 
+                      font-family="Impact, 'Arial Black', 'Helvetica', sans-serif" 
+                      font-size="80" 
+                      font-weight="900" 
+                      text-anchor="middle" 
+                      fill="none"
+                      stroke="#FF006E"
+                      stroke-width="4"
+                      letter-spacing="2">
+                    WICHITAWESOME
+                </text>
+                
+                <!-- Underline accent -->
+                <rect x="100" y="115" width="700" height="4" fill="#FF006E"/>
+            </svg>
+        </div>
+
+        <!-- Color Variations -->
+        <div class="variations">
+            <!-- White on Black -->
+            <div class="variation">
+                <div class="variation-label">Primary (White on Black)</div>
+                <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="100" fill="#0A0A0A"/>
+                    <text x="250" y="60" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="44" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#FFFFFF"
+                          letter-spacing="1">
+                        WICHITAWESOME
+                    </text>
+                    <rect x="50" y="70" width="400" height="3" fill="#FF006E"/>
+                </svg>
+            </div>
+
+            <!-- Black on White -->
+            <div class="variation">
+                <div class="variation-label">Inverted (Black on White)</div>
+                <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="100" fill="#FFFFFF"/>
+                    <text x="250" y="60" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="44" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#0A0A0A"
+                          letter-spacing="1">
+                        WICHITAWESOME
+                    </text>
+                    <rect x="50" y="70" width="400" height="3" fill="#FF006E"/>
+                </svg>
+            </div>
+
+            <!-- Pink on Black -->
+            <div class="variation">
+                <div class="variation-label">Accent (Pink on Black)</div>
+                <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="100" fill="#0A0A0A"/>
+                    <text x="250" y="60" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="44" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#FF006E"
+                          letter-spacing="1">
+                        WICHITAWESOME
+                    </text>
+                    <rect x="50" y="70" width="400" height="3" fill="#00F5FF"/>
+                </svg>
+            </div>
+
+            <!-- Outlined -->
+            <div class="variation">
+                <div class="variation-label">Outlined</div>
+                <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="500" height="100" fill="#0A0A0A"/>
+                    <text x="250" y="60" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="44" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="none"
+                          stroke="#FFFFFF"
+                          stroke-width="2"
+                          letter-spacing="1">
+                        WICHITAWESOME
+                    </text>
+                    <rect x="50" y="70" width="400" height="3" fill="#FF006E"/>
+                </svg>
+            </div>
+
+            <!-- Stacked -->
+            <div class="variation">
+                <div class="variation-label">Stacked / Square</div>
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="300" height="300" fill="#0A0A0A"/>
+                    <text x="150" y="120" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="42" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#FFFFFF"
+                          letter-spacing="0">
+                        WICHITA
+                    </text>
+                    <text x="150" y="180" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="42" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#FFFFFF"
+                          letter-spacing="0">
+                        AWESOME
+                    </text>
+                    <rect x="50" y="140" width="200" height="3" fill="#FF006E"/>
+                </svg>
+            </div>
+
+            <!-- Monogram -->
+            <div class="variation">
+                <div class="variation-label">Monogram</div>
+                <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="300" height="300" fill="#0A0A0A"/>
+                    <rect x="50" y="50" width="200" height="200" fill="none" stroke="#FF006E" stroke-width="4"/>
+                    <text x="150" y="190" 
+                          font-family="Impact, 'Arial Black', sans-serif" 
+                          font-size="120" 
+                          font-weight="900" 
+                          text-anchor="middle" 
+                          fill="#FFFFFF"
+                          letter-spacing="-4">
+                        WA
+                    </text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Download Buttons -->
+        <div class="download-options">
+            <button class="download-btn" onclick="downloadSVG('main', 0)">Download Main Logo</button>
+            <button class="download-btn" onclick="downloadSVG('primary', 1)">Download Primary</button>
+            <button class="download-btn" onclick="downloadSVG('inverted', 2)">Download Inverted</button>
+            <button class="download-btn" onclick="downloadSVG('monogram', 6)">Download Monogram</button>
+        </div>
+
+        <!-- Color System -->
+        <div class="color-info">
+            <h2 style="color: #ffffff; font-size: 20px; font-weight: 700; margin-bottom: 8px;">Brand Colors</h2>
+            <p style="color: #999999; font-size: 14px; margin-bottom: 24px;">Use these colors consistently across all materials</p>
+            
+            <div class="color-swatches">
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #FF006E;"></div>
+                    <div class="swatch-name">Primary Pink</div>
+                    <div class="swatch-hex">#FF006E</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #00F5FF;"></div>
+                    <div class="swatch-name">Cyan</div>
+                    <div class="swatch-hex">#00F5FF</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #FFBE0B;"></div>
+                    <div class="swatch-name">Accent Yellow</div>
+                    <div class="swatch-hex">#FFBE0B</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #0A0A0A; border-color: #333333;"></div>
+                    <div class="swatch-name">Black</div>
+                    <div class="swatch-hex">#0A0A0A</div>
+                </div>
+                <div class="swatch">
+                    <div class="swatch-color" style="background: #FFFFFF;"></div>
+                    <div class="swatch-name">White</div>
+                    <div class="swatch-hex">#FFFFFF</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadSVG(name, index) {
+            let svg;
+            if (index === 0) {
+                svg = document.querySelector('.logo-main svg');
+            } else {
+                svg = document.querySelectorAll('.variation svg')[index - 1];
+            }
+            
+            const serializer = new XMLSerializer();
+            const svgString = serializer.serializeToString(svg);
+            const blob = new Blob([svgString], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `wichitawesome-logo-${name}.svg`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Export all as PNG
+        function exportAsPNG(svgElement, filename) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const data = new XMLSerializer().serializeToString(svgElement);
+            const img = new Image();
+            
+            img.onload = function() {
+                canvas.width = img.width * 2; // 2x for retina
+                canvas.height = img.height * 2;
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                });
+            };
+            
+            img.src = 'data:image/svg+xml;base64,' + btoa(data);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wichitawesome - Where Wichita's music, art & street sports culture connects. 18+ community platform.">
+    <title>Wichitawesome - Wichita's Underground Culture Platform</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg">
+    <link rel="apple-touch-icon" href="/public/apple-touch-icon.svg">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#FF006E">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.json">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Colors */
+            --primary: #FF006E;
+            --primary-hover: #D90060;
+            --secondary: #00F5FF;
+            --accent: #FFBE0B;
+            --success: #06FFA5;
+            --warning: #FB5607;
+            
+            --black: #0A0A0A;
+            --gray-900: #1A1A1A;
+            --gray-800: #2D2D2D;
+            --gray-700: #404040;
+            --gray-600: #666666;
+            --gray-500: #808080;
+            --white: #FFFFFF;
+            
+            /* Fonts */
+            --font-display: 'Archivo Black', Impact, sans-serif;
+            --font-body: 'Space Grotesk', -apple-system, sans-serif;
+        }
+        
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(255, 190, 11, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gray-800);
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .btn {
+            padding: 12px 32px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 0, 110, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 10px 30px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            color: var(--white);
+        }
+        
+        .hero h1 .highlight {
+            color: var(--primary);
+            display: inline-block;
+        }
+        
+        .hero p {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--gray-500);
+            margin-bottom: 48px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .age-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 0, 110, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 24px;
+        }
+        
+        /* Features Grid */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: var(--gray-900);
+            border: 2px solid var(--gray-800);
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: var(--primary);
+            font-family: var(--font-display);
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+        
+        .feature-card p {
+            color: var(--gray-500);
+            line-height: 1.8;
+        }
+        
+        /* Event Preview */
+        .events-preview {
+            padding: 80px 0;
+            background: var(--gray-900);
+        }
+        
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .event-card {
+            background: var(--gray-800);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 32px rgba(255, 0, 110, 0.2);
+        }
+        
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gray-700);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--gray-500);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.3) 0%, rgba(0, 245, 255, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .event-card:hover .event-image::before {
+            opacity: 1;
+        }
+        
+        .event-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .event-content {
+            padding: 20px;
+        }
+        
+        .event-date {
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .event-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .event-venue {
+            color: var(--gray-500);
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        
+        .event-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: rgba(255, 0, 110, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 0, 110, 0.1) 0%, rgba(0, 245, 255, 0.1) 100%);
+            pointer-events: none;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+        
+        .cta-section p {
+            font-size: 1.5rem;
+            color: var(--gray-500);
+            margin-bottom: 48px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--gray-900);
+            padding: 60px 0 30px;
+            border-top: 2px solid var(--gray-800);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        .footer-section h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-section a {
+            color: var(--gray-500);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-800);
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 80px 0 60px;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            /* Mobile bottom nav */
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.95);
+                backdrop-filter: blur(10px);
+                border-top: 2px solid var(--gray-800);
+                padding: 12px 0;
+                justify-content: space-around;
+                z-index: 100;
+            }
+            
+            .mobile-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 4px;
+                color: var(--gray-500);
+                text-decoration: none;
+                font-size: 12px;
+                font-weight: 600;
+                transition: color 0.3s;
+            }
+            
+            .mobile-nav-item span {
+                font-size: 24px;
+            }
+            
+            .mobile-nav-item:hover,
+            .mobile-nav-item.active {
+                color: var(--primary);
+            }
+            
+            body {
+                padding-bottom: 80px; /* Space for mobile nav */
+            }
+        }
+        
+        /* Install PWA Banner */
+        .pwa-banner {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            right: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            display: none; /* Show via JS */
+            z-index: 1000;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .pwa-banner-content {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .pwa-banner img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+        }
+        
+        .pwa-banner-text {
+            flex: 1;
+        }
+        
+        .pwa-banner-text strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .pwa-banner-text p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+        
+        .pwa-banner-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .pwa-banner button {
+            flex: 1;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .pwa-install {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .pwa-dismiss {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">WICHITAWESOME</div>
+                
+                <nav>
+                    <a href="#home">Home</a>
+                    <a href="#events">Events</a>
+                    <a href="#networking">Network</a>
+                    <a href="#market">Market</a>
+                </nav>
+                
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <button class="btn btn-outline">Log In</button>
+                    <button class="btn btn-primary">Sign Up Free</button>
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>
+                <span class="highlight">WICHITA'S</span><br>
+                UNDERGROUND<br>
+                CULTURE HUB
+            </h1>
+            <p>
+                Music. Art. Street Sports. All in one place.<br>
+                Where bands, artists, skaters, street ballers, sneaker heads,<br>
+                & creative communities connect.
+            </p>
+            <div class="hero-cta">
+                <button class="btn btn-primary" style="font-size: 18px; padding: 16px 48px;">
+                    Join the Movement
+                </button>
+                <button class="btn btn-outline" style="font-size: 18px; padding: 14px 48px;">
+                    Explore Events
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">WHY WICHITAWESOME?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">01</div>
+                    <h3>Discover Events</h3>
+                    <p>Never miss a show, art exhibition, or street tournament. We bring you an up to date listing of all the latest events.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">02</div>
+                    <h3>Build Your Network</h3>
+                    <p>Connect with your community. Show your work, book shows, find collaborators, and grow your following.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">03</div>
+                    <h3>Sell Your Goods</h3>
+                    <p>From merch to vinyl, gear to sneakers, video games to trading cards, buy and sell directly in the community. No middleman. Just culture.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">04</div>
+                    <h3>Mobile First</h3>
+                    <p>Add to your home screen for instant access. Get notifications for new messages, event reminders, and when your favorite artists post.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">05</div>
+                    <h3>Real-Time Feed</h3>
+                    <p>Stay in the loop with live updates from the scene. See what's happening right now - who's playing where, what's dropping, who's on the move.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">06</div>
+                    <h3>Level Up</h3>
+                    <p>Earn badges, get featured, and build your rep. The more active you are, the more visibility you get. Make a name for yourself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Preview -->
+    <section class="events-preview" id="events">
+        <div class="container">
+            <h2 class="section-title">HAPPENING IN WICHITA</h2>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80');">
+                        <div class="event-badge">Tonight</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Fri, Feb 7 • 9:00 PM</div>
+                        <h3>Underground Hip-Hop Showcase</h3>
+                        <div class="event-venue">The Cotillion</div>
+                        <div class="event-tags">
+                            <span class="tag">Hip-Hop</span>
+                            <span class="tag">21+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1547447134-cd3f5c716030?w=800&q=80');">
+                        <div class="event-badge">Sat</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Sat, Feb 8 • 2:00 PM</div>
+                        <h3>Riverside Skate Jam</h3>
+                        <div class="event-venue">Riverside Park</div>
+                        <div class="event-tags">
+                            <span class="tag">Skateboarding</span>
+                            <span class="tag">All Ages</span>
+                            <span class="tag">Free</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&q=80');">
+                        <div class="event-badge">Sun</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Sun, Feb 9 • 6:00 PM</div>
+                        <h3>Street Art Opening: "Concrete Dreams"</h3>
+                        <div class="event-venue">Harvester Arts</div>
+                        <div class="event-tags">
+                            <span class="tag">Art Show</span>
+                            <span class="tag">18+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&q=80');">
+                        <div class="event-badge">Next Week</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Sat, Feb 15 • 12:00 PM</div>
+                        <h3>3-on-3 Street Basketball Tournament</h3>
+                        <div class="event-venue">McAdams Park</div>
+                        <div class="event-tags">
+                            <span class="tag">Basketball</span>
+                            <span class="tag">$50 Prize</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80');">
+                        <div class="event-badge">Feb 16</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Sun, Feb 16 • 8:00 PM</div>
+                        <h3>Punk Rock Sunday ft. Local Legends</h3>
+                        <div class="event-venue">Wave</div>
+                        <div class="event-tags">
+                            <span class="tag">Punk</span>
+                            <span class="tag">21+</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80');">
+                        <div class="event-badge">Feb 20</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-date">Thu, Feb 20 • 7:00 PM</div>
+                        <h3>Open Mic Night</h3>
+                        <div class="event-venue">Kirby's Beer Store</div>
+                        <div class="event-tags">
+                            <span class="tag">Open Mic</span>
+                            <span class="tag">All Ages</span>
+                            <span class="tag">Free</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 48px;">
+                <button class="btn btn-primary" style="font-size: 16px;">
+                    View All Events →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>READY TO MAKE<br>SOME NOISE?</h2>
+                <p>
+                    Join Wichita's fastest-growing cultural community.<br>
+                    Free forever. No bullshit.
+                </p>
+                <button class="btn btn-primary" style="font-size: 20px; padding: 20px 60px;">
+                    Sign Up Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#networking">Networking</a></li>
+                        <li><a href="#market">Marketplace</a></li>
+                        <li><a href="#news">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#artists">Artists</a></li>
+                        <li><a href="#venues">Venues</a></li>
+                        <li><a href="#athletes">Athletes</a></li>
+                        <li><a href="#guidelines">Community Guidelines</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#safety">Safety</a></li>
+                        <li><a href="#features">Feature Requests</a></li>
+                        <li><a href="#api">Developer API</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#terms">Terms of Service</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#cookies">Cookie Policy</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2026 Wichitawesome. Built with ❤️ in Wichita, Kansas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="mobile-nav">
+        <a href="#home" class="mobile-nav-item active">
+            <span style="font-size: 20px; font-weight: 900;">H</span>
+            <span>Home</span>
+        </a>
+        <a href="#events" class="mobile-nav-item">
+            <span style="font-size: 20px; font-weight: 900;">E</span>
+            <span>Events</span>
+        </a>
+        <a href="#networking" class="mobile-nav-item">
+            <span style="font-size: 20px; font-weight: 900;">N</span>
+            <span>Network</span>
+        </a>
+        <a href="#market" class="mobile-nav-item">
+            <span style="font-size: 20px; font-weight: 900;">M</span>
+            <span>Market</span>
+        </a>
+        <a href="#profile" class="mobile-nav-item">
+            <span style="font-size: 20px; font-weight: 900;">P</span>
+            <span>Profile</span>
+        </a>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-banner" id="pwaBanner">
+        <div class="pwa-banner-content">
+            <img src="/icon-192.png" alt="Wichitawesome" onerror="this.style.display='none'">
+            <div class="pwa-banner-text">
+                <strong>Add Wichitawesome to your home screen</strong>
+                <p>Get instant access to events, messages & more</p>
+            </div>
+        </div>
+        <div class="pwa-banner-actions">
+            <button class="pwa-install" onclick="installPWA()">Add to Home</button>
+            <button class="pwa-dismiss" onclick="dismissPWA()">Later</button>
+        </div>
+    </div>
+
+    <script>
+        // PWA Install Prompt
+        let deferredPrompt;
+        
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Check if user hasn't dismissed recently
+            const dismissed = localStorage.getItem('pwaPromptDismissed');
+            const now = Date.now();
+            
+            if (!dismissed || (now - parseInt(dismissed)) > 7 * 24 * 60 * 60 * 1000) {
+                setTimeout(() => {
+                    document.getElementById('pwaBanner').style.display = 'block';
+                }, 3000); // Show after 3 seconds
+            }
+        });
+        
+        function installPWA() {
+            const banner = document.getElementById('pwaBanner');
+            banner.style.display = 'none';
+            
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('PWA installed');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+        
+        function dismissPWA() {
+            document.getElementById('pwaBanner').style.display = 'none';
+            localStorage.setItem('pwaPromptDismissed', Date.now().toString());
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Mobile nav active state
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
